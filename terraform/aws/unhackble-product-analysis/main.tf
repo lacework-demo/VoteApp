@@ -6,4 +6,5 @@ resource "aws_s3_bucket" "unhackble-product-analysis" {
     Name        = "product"
     Environment = "internal"
   }
+  block_public_acls = true
 }
