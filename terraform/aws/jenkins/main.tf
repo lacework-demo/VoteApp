@@ -72,13 +72,15 @@ resource "aws_alb" "jenkins_alb" {
 
 resource "aws_alb_listener" "jenkins_alb_listener" {
   load_balancer_arn = aws_alb.jenkins_alb.arn
-  port              = 8080
-  protocol          = "HTTP"
+  port              = "443"
+  protocol          = "HTTPS"
 
   default_action {
     target_group_arn = aws_alb_target_group.jenkins_alb_target_group.arn
     type             = "forward"
   }
+  ssl_policy      = "ELBSecurityPolicy-2016-08"
+  certificate_arn = "<Provide the ARN of the default SSL server certificate>"
 }
 
 resource "aws_alb_target_group" "jenkins_alb_target_group" {
