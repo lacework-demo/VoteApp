@@ -64,10 +64,11 @@ resource "aws_instance" "jenkins-server" {
 }
 
 resource "aws_alb" "jenkins_alb" {
-  name            = "jenkins-alb"
-  subnets         = [aws_subnet.subnet.id, aws_subnet.subnet1.id]
-  security_groups = [aws_security_group.ingress-port-8080-to-world.id]
-  internal        = false
+  name                       = "jenkins-alb"
+  subnets                    = [aws_subnet.subnet.id, aws_subnet.subnet1.id]
+  security_groups            = [aws_security_group.ingress-port-8080-to-world.id]
+  internal                   = false
+  enable_deletion_protection = true
 }
 
 resource "aws_alb_listener" "jenkins_alb_listener" {
