@@ -203,7 +203,7 @@ resource "ssh_resource" "install_lw" {
 resource "aws_instance" "jenkins-agent" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = "t2.medium"
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   subnet_id                   = aws_subnet.subnet.id
   vpc_security_group_ids      = [aws_security_group.ingress-ssh-from-all.id]
 
