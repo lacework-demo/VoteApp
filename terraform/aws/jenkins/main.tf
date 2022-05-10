@@ -79,7 +79,7 @@ resource "aws_alb_listener" "jenkins_alb_listener" {
     target_group_arn = aws_alb_target_group.jenkins_alb_target_group.arn
     type             = "forward"
   }
-  ssl_policy      = "ELBSecurityPolicy-2016-08"
+  ssl_policy      = "ELBSecurityPolicy-TLS-1-2-2017-01"
   certificate_arn = "<Provide the ARN of the default SSL server certificate>"
 }
 
