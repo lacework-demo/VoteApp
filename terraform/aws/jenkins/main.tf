@@ -55,7 +55,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "jenkins-server" {
   ami                         = data.aws_ami.ubuntu.id
   instance_type               = "t2.medium"
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   subnet_id                   = aws_subnet.subnet.id
   vpc_security_group_ids      = [aws_security_group.ingress-ssh-from-all.id, aws_security_group.ingress-port-8080-from-alb.id]
 
