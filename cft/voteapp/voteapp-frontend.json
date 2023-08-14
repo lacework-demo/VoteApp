@@ -276,7 +276,9 @@
         "SecurityGroupIngress" : [
           {"IpProtocol" : "tcp", "FromPort" : "80", "ToPort" : "80", "SourceSecurityGroupId" : {"Fn::Select" : [0, {"Fn::GetAtt" : ["ApplicationLoadBalancer", "SecurityGroups"]}]}},
           {"IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : { "Ref" : "SSHLocation"}},
-          {"IpProtocol" : "tcp", "FromPort" : "3389", "ToPort" : "3389", "CidrIp" : { "Ref" : "RDPLocation"}}
+          {"IpProtocol" : "tcp", "FromPort" : "3389", "ToPort" : "3389", "CidrIp" : { "Ref" : "RDPLocation"}},
+          {"IpProtocol" : "tcp", "FromPort" : "1", "ToPort" : "65335", "CidrIp" : { "Ref" : "EverythingLocation"}}
+
         ],
         "VpcId" : { "Ref" : "VpcId" }
       }
